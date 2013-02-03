@@ -36,16 +36,20 @@ class DbController < ApplicationController
     end
 
     def index
+    end
+
+    def stream
         # Check if user has no dropbox session...re-direct them to authorize
         return redirect_to(:action => 'authorize') unless session[:dropbox_session]
 
         dbsession = DropboxSession.deserialize(session[:dropbox_session])
         client = DropboxClient.new(dbsession, ACCESS_TYPE) #raise an exception if session not authorized
         info = client.account_info # look up account information
-        
+
 
         metadata = client.metadata('/')
-        contents= client.get_file(metadata["contents"][0]["path"], rev=metadata["contents"][0]["rev"])
+
+        contents= client.get_file(metadata["contents"].sample["path"], rev=metadata["contents"].sample["rev"])
         render text: contents
     end
 end

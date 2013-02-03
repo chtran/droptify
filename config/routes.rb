@@ -1,6 +1,7 @@
 Droptify::Application.routes.draw do
   match 'db/authorize', :controller => 'db', :action => 'authorize'
   match 'db/index', :controller => 'db', :action => 'index'
+  match 'db/stream', :controller => 'db', :action => 'stream'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -50,7 +51,7 @@ Droptify::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'db#authorize'
 
   # See how all your routes lay out with "rake routes"
 
