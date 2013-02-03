@@ -1,6 +1,6 @@
 Droptify::Application.routes.draw do
   match 'db/authorize', :controller => 'db', :action => 'authorize'
-  match 'db/upload', :controller => 'db', :action => 'upload'
+  match 'db/index', :controller => 'db', :action => 'index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
