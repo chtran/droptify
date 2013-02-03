@@ -44,8 +44,8 @@ class DbController < ApplicationController
         info = client.account_info # look up account information
         
 
-        contents, metadata = client.get_file_and_metadata('/A-little-love.mp3', rev='50d94f68d')
-        puts contents
-        puts metadata
+        metadata = client.metadata('/')
+        contents= client.get_file(metadata["contents"][0]["path"], rev=metadata["contents"][0]["rev"])
+        render text: contents
     end
 end
